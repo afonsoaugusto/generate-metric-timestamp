@@ -1,0 +1,1 @@
+# generate-metric-timestamp
