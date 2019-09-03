@@ -37,23 +37,14 @@ fig.canvas.set_window_title('Live Chart')
 ax.set_title("Data Simulate")
 
 axcolor = 'lightgoldenrodyellow'
-resetax = plt.axes([0.8, 0.025, 0.1, 0.04])
-button = Button(resetax, 'Reset', color=axcolor, hovercolor='0.975')
-
-
-def reset(event):
-    print("----------HHHHHH----------")
-
-
-button.on_clicked(reset)
 
 axstart = plt.axes([0.025, 0.5, 0.20, 0.05], facecolor=axcolor)
 axend = plt.axes([0.025, 0.4, 0.20, 0.06], facecolor=axcolor)
 
 init_start = int(config['DATA']['limit_start'])
 init_end = int(config['DATA']['limit_end'])
-sfreq = Slider(axstart, 'Start', 0, 3000, valinit=init_start, valstep=1, valfmt='%1.0f')
-samp = Slider(axend, 'End', 0, 3000, valinit=init_end, valstep=1, valfmt='%1.0f')
+sstart = Slider(axstart, 'Start', 0, 3000, valinit=init_start, valstep=1, valfmt='%1.0f')
+send = Slider(axend, 'End', 0, 3000, valinit=init_end, valstep=1, valfmt='%1.0f')
 
 def update(position,val):
     config_data = config['DATA']
@@ -68,8 +59,8 @@ def update_start(val):
 def update_end(val):    
     update('limit_end',val)
 
-sfreq.on_changed(update_start)
-samp.on_changed(update_end)
+sstart.on_changed(update_start)
+send.on_changed(update_end)
 
 # act on new data coming from streamer
 while True:
