@@ -4,3 +4,4 @@ matplotlib==3.1.1
 tk==0.1.0
 ipympl==0.3.3
 influxdb==5.2.3
+pandas==0.25.3
